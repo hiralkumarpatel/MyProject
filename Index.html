@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.min.js"></script>
+    <script src="data.js"></script>
+</head>
+<body data-ng-app="myApp" data-ng-controller="myController">
+    <div>
+        <input type="text" data-ng-model="searchText.firstName" />
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+            </tr>
+            <tr data-ng-repeat="record in records | filter:searchText">
+                <td>{{record.id}}</td>
+                <td>{{record.firstName}}</td>
+                <td>{{record.lastName}}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var myApp = angular.module("myApp", []).controller("myController", function ($scope) {
+            $scope.records = data;
+        });
+    </script>
+</body>
+</html>
